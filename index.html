@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Fonte profissional recomendada para tecnologia (Inter) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<title>Portfólio – Danila Moraes</title>
+
+<style>
+  /* ===========================================================
+     VARIÁVEIS E PALETA
+     - Paleta escolhida para transmitir seriedade, modernidade e
+       atratividade para recrutadores de tech/IA/QA/UX.
+     - Cores principais: verde escuro (accent), verde intermediário (accent-2),
+       fundo escuro neutro e texto claro para contraste.
+     =========================================================== */
+  :root{
+    --bg: #071617;         /* fundo quase preto com subtono frio */
+    --surface: #0b2520;    /* superfície levemente mais clara */
+    --text: #eaf7f2;       /* texto principal claro e suave */
+    --muted: #9abfb0;      /* texto secundário / subtítulos */
+    --accent: #0e8f63;     /* verde principal (profissional, legível) */
+    --accent-2: #0a6e50;   /* verde secundário mais escuro */
+    --card: #082421;
+    --shadow: 0 14px 40px rgba(3,10,8,0.55);
+    --font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  /* Tema claro (mantive caso queira alternar) */
+  [data-theme="light"]{
+    --bg: #f6fff9;
+    --surface: #ffffff;
+    --text: #05221a;
+    --muted: #2d6b58;
+    --accent: #0f8f63;
+    --accent-2:#0a6e50;
+    --card: #ffffff;
+    --shadow: 0 10px 30px rgba(2,8,23,.06);
+  }
+
+  /* Reset / tipografia */
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font:16px/1.6 var(--font-family);
+    background:
+      radial-gradient(900px 500px at 8% -8%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 28%),
+      radial-gradient(700px 600px at 100% 12%, color-mix(in oklab, var(--accent-2) 6%, transparent), transparent 38%),
+      var(--bg);
+    color:var(--text);
+    transition: background .3s ease, color .3s ease;
+    scroll-behavior:smooth;
+  }
+
+  /* NAVBAR (mínimas alterações) */
+  .nav{
+    position:sticky; top:0; z-index:60; backdrop-filter: blur(8px);
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 6%, transparent);
+  }
+  .nav-inner{max-width:1100px; margin:auto; padding:.9rem 1rem; display:flex; align-items:center; justify-content:space-between;}
+  .brand{font-weight:800; letter-spacing:.2px; font-size:1.05rem}
+  .nav a{color:var(--text); text-decoration:none; margin-left:1rem; font-weight:600; opacity:.95}
+  .nav a:hover{color:var(--accent)}
+  .theme-btn{
+    border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+    background:transparent; color:var(--text);
+    border-radius:999px; padding:.45rem .8rem; cursor:pointer; font-weight:700;
+  }
+
+  /* HERO
+     - Aumentei o tamanho do card de imagem (perfil) para valor maior e responsivo
+     - Mantive grid, mas reduzi a diferença para destacar a foto
+  */
+  .hero{
+    max-width:1100px; margin: 2rem auto 0; padding: 4rem 1rem 3rem;
+    display:grid; gap:1.6rem; grid-template-columns: 1.05fr .95fr; align-items:center;
+  }
+  .hero h1{font-size: clamp(2rem, 4vw + 1rem, 3rem); line-height:1.05; margin:.2rem 0}
+  .hero .welcome{
+    font-size:1.02rem; color:var(--muted); margin-top:.4rem; margin-bottom:1rem;
+  }
+  .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin:.8rem 0 1.2rem}
+  .chip{
+    background: linear-gradient(90deg, color-mix(in oklab, var(--accent) 40%, transparent),
+      color-mix(in oklab, var(--accent-2) 40%, transparent));
+    color:#05221a; font-weight:700; padding:.35rem .7rem; border-radius:999px; font-size:.85rem;
+  }
+  .cta{
+    display:inline-flex; gap:.6rem; align-items:center;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    color:#05221a; text-decoration:none; font-weight:800;
+    padding:.9rem 1.2rem; border-radius:12px; box-shadow: var(--shadow); transition: transform .16s ease;
+  }
+  .cta:hover{transform:translateY(-3px)}
+  .hero-card{display:flex; align-items:center; justify-content:center; border-radius:16px; padding:.5rem;}
+
+  /* Ajuste para imagem de perfil grande: use SVG container com dimensões maiores */
+  .hero-card svg{width:340px; height:340px}
+  /* Anel (stroke) mais largo e suave */
+  .hero-card circle.profile-ring{stroke-width:5; opacity:0.98}
+
+  /* SECTIONS (mantive estrutura) */
+  section{scroll-margin-top:88px}
+  .wrap{max-width:1100px; margin:0 auto; padding: 2rem 1rem 3rem}
+  .section-title{font-size: clamp(1.4rem, 1vw + 1rem, 2rem); margin:1rem 0 2rem; display:flex; align-items:center; gap:.6rem;}
+  .section-title .bar{width:70px; height:5px; border-radius:999px; background: linear-gradient(90deg, var(--accent), var(--accent-2));}
+
+  /* Timeline */
+  .timeline{position:relative; padding-left:28px}
+  .timeline:before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background: color-mix(in oklab, var(--text) 10%, transparent);}
+  .t-item{position:relative; margin:0 0 18px; padding-left:8px}
+  .t-item:before{content:""; position:absolute; left:-4px; top:.4rem; width:10px; height:10px; border-radius:999px; background: var(--accent);}
+  .t-item h3{margin:0; font-size:1.05rem}
+  .t-item .when{font-size:.9rem; color:var(--muted)}
+
+  /* Grid / cards */
+  .grid{display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
+  .card{background:linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), color-mix(in oklab, var(--card) 98%, transparent));
+    border:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius:14px; padding:1.2rem; box-shadow: var(--shadow);}
+
+  /* Contato */
+  .contacts{display:flex; gap:.6rem; flex-wrap:wrap}
+  .pill{display:inline-flex; align-items:center; gap:.5rem;
+    border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+    padding:.6rem .9rem; border-radius:999px; text-decoration:none; color:var(--text)}
+  .pill:hover{border-color: var(--accent); color: var(--accent)}
+  .pill i{font-size:1.1rem}
+
+  footer{padding:2rem 1rem; text-align:center; color:var(--muted)}
+
+  /* Responsividade: para telas pequenas, reduzir tamanho do SVG e empilhar colunas */
+  @media (max-width: 900px){
+    .hero{grid-template-columns:1fr; gap:1rem}
+    .hero-card svg{width:260px; height:260px}
+  }
+
+  /* Acento no nome do typing */
+  #typing{font-weight:800; color:var(--accent)}
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">Danila Moraes</div>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+        <button class="theme-btn" id="themeToggle">Alternar tema</button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO
+       - Saudação solicitada: "Olá, eu sou Danila" (apenas primeiro nome)
+       - Frase de boas-vindas logo abaixo (curta e profissional)
+       - Imagem de perfil aumentada (usa perfil.jpg em mesma pasta)
+       - Comentários no código explicam cada alteração
+  -->
+  <section class="hero">
+    <div>
+      <div class="chips">
+        <span class="chip">Tecnologia</span>
+        <span class="chip">Dados</span>
+        <span class="chip">QA</span>
+        <span class="chip">Logística</span>
+      </div>
+
+      <!-- Título principal: primeiro nome + efeito de digitação -->
+      <h1>Danila aqui. Me conheça melhor <span id="typing"></span></h1>
+
+      <!-- Frase de boas-vindas solicitada -->
+      <div class="welcome" aria-hidden="false">Bem-vinda(o) ao meu portfólio </div>
+      <p style="max-width:56ch; color:var(--muted); margin: .6rem 0 1.2rem">
+        Operações Remotas • Dados & Documentação • Qualidade de Software • Power BI • Automação de Processos
+      </p>
+
+      <a class="cta" href="#contato" aria-label="Fale com Danila">Fale comigo</a>
+    </div>
+
+    <!-- HERO CARD: imagem de perfil real (perfil.jpg)
+         - imagem é inserida em <svg> com clipPath circular para manter estética
+         - tamanho aumentado para destaque (340x340px desktop, 260px mobile)
+         - stroke e sombra para evidenciar foto
+    -->
+    <div class="hero-card" aria-hidden="false" title="Foto de Danila">
+      <svg viewBox="0 0 200 200" role="img" aria-label="Foto de perfil">
+        <defs>
+          <clipPath id="circleView">
+            <circle cx="100" cy="100" r="95" />
+          </clipPath>
+        </defs>
+
+        <!-- A imagem local 'perfil.jpg' deve estar na mesma pasta que este HTML -->
+        <image href="perfil.jpg" x="0" y="0" width="200" height="200" clip-path="url(#circleView)" preserveAspectRatio="xMidYMid slice"></image>
+
+        <!-- Anel de destaque ao redor do avatar -->
+        <circle class="profile-ring" cx="100" cy="100" r="95" fill="none" stroke="var(--accent)" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="wrap reveal">
+    <h2 class="section-title"><span class="bar"></span> Sobre mim</h2>
+    <!-- Texto em português baseado no seu Profile.pdf, adaptado para tom de portfolio tech -->
+    <p style="max-width:80ch; color:var(--text);">
+      Sou profissional orientada a processos com mais de 15 anos de experiência em administração, logística, compras e gestão de dados.
+      Tenho histórico de otimização de processos, automação de relatórios (Power BI) e atuação em ambientes remotos e assíncronos.
+      <br><br>
+      Atuando em órgãos públicos e empresas privadas, desenvolvi competências em análise de dados, coordenação logística e implantação de controles que aumentaram eficiência operacional.
+      Atualmente curso Ciência de Dados na Univesp e me especializo em QA e automação — procurando oportunidades que valorizem processos claros, autonomia e entrega orientada a resultados.
+    </p>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia" class="wrap reveal">
+    <h2 class="section-title"><span class="bar"></span> Experiência</h2>
+    <div class="timeline">
+      <div class="t-item">
+        <h3>Prefeitura Municipal de Ilhabela</h3>
+        <div class="when">2024 – 2025</div>
+        <p>Agente de Administração Pública — análise de processos, licenças e regularização fiscal.</p>
+      </div>
+      <div class="t-item">
+        <h3>Kidbrains</h3>
+        <div class="when">2023 – 2024</div>
+        <p>Gerente de Recrutamento (saúde) — coordenação de pipelines e contratação remota.</p>
+      </div>
+      <div class="t-item">
+        <h3>Leverzon</h3>
+        <div class="when">2021 – 2023</div>
+        <p>Dispatcher — coordenação logística e compliance de transportadoras.</p>
+      </div>
+      <div class="t-item">
+        <h3>Brazil Khon Kaen Trading</h3>
+        <div class="when">2017 – 2021</div>
+        <p>Coordenadora de Supply Chain — compras internacionais, inventário e relatórios gerenciais.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="wrap reveal">
+    <h2 class="section-title"><span class="bar"></span> Projetos em destaque</h2>
+    <div class="grid">
+      <article class="card">
+        <h4>Dashboards em Power BI</h4>
+        <p>Criação de relatórios automáticos para reduzir reuniões e fornecer dados em tempo real.</p>
+      </article>
+      <article class="card">
+        <h4>Otimização de Processos</h4>
+        <p>Automatização de rotinas e redução de follow-ups manuais por meio de fluxos padronizados.</p>
+      </article>
+      <article class="card">
+        <h4>Implementação SAP / Logística</h4>
+        <p>Suporte à implantação de módulos logísticos e controle de KPIs de transporte.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="wrap reveal">
+    <h2 class="section-title"><span class="bar"></span> Contato</h2>
+    <div class="contacts">
+      <a class="pill" href="mailto:danilabm@gmail.com"><i class="fa-solid fa-envelope"></i> danilabm@gmail.com</a>
+      <a class="pill" href="https://www.linkedin.com/in/danilabm/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>© 2025 • Danila Moraes</footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Tema (dark/light) - mantive comportamento original
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved) root.setAttribute('data-theme', saved);
+    document.getElementById('themeToggle').addEventListener('click', ()=>{
+      const t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+    });
+
+    // Efeito de digitação — agora mostra só o primeiro nome "Danila"
+    const typingEl = document.getElementById('typing');
+    const nameText = 'Danila';
+    let idx = 0;
+    function type() {
+      if (idx <= nameText.length){
+        typingEl.textContent = nameText.slice(0, idx++);
+        setTimeout(type, 65); // ritmo fluido e profissional
+      }
+    }
+    document.addEventListener('DOMContentLoaded', type);
+  </script>
+
+</body>
+</html>
