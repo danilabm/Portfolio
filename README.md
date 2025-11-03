@@ -1,4 +1,4 @@
-# 🌐 Portfólio – Dione Braga Ferreira
+# 🌐 Portfólio – Danila Moraes
 
 Este projeto é o meu portfólio pessoal, desenvolvido em **HTML, CSS e JavaScript puro**.  
 Aqui apresento minha trajetória, experiências, projetos e formas de contato.  
@@ -24,8 +24,8 @@ O objetivo é servir tanto como **currículo interativo** quanto como **laborat�
 
 ## 📬 Contato
 
-✉️ E-mail: dionebraga.work@gmail.com
-💼 LinkedIn: linkedin.com/in/dionebraga
+✉️ E-mail: danilabm@gmail.com
+💼 LinkedIn: linkedin.com/in/danilabm
 📸 Instagram: instagram.com/seuusuario
 🌐 Site: Cadastro Cultural
 
