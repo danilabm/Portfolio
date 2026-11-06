@@ -1,53 +1,50 @@
-# 🌐 Portfólio – Danila Moraes
+# Portfólio – Danila Moraes
 
-Este projeto é o meu portfólio pessoal, desenvolvido em **HTML, CSS e JavaScript puro**.  
-Aqui apresento minha trajetória, experiências, projetos e formas de contato.  
-O objetivo é servir tanto como **currículo interativo** quanto como **laboratório de aprendizado em frontend**.
+Meu portfólio pessoal em uma página: trajetória, experiências, projetos e contato. Feito em HTML, CSS e JavaScript puro, sem frameworks.
 
-## ✨ Funcionalidades
+**Ver online:** https://danilabm.github.io/Portfolio/
 
-- **Hero interativo** com efeito de digitação.
-- **Tema claro/escuro** com persistência no `localStorage`.
-- **Scroll reveal** com animações sutis ao rolar a página.
-- **Cards interativos** para os projetos, com hover e destaque.
-- **Foto de perfil recortada em círculo** via `<svg>` + borda estilizada.
-- **Links sociais** (E-mail, Telefone, Site, LinkedIn e Instagram) com ícones do Font Awesome.
-- **Responsividade** para desktop e dispositivos móveis.
+![Captura de tela do portfólio](screenshot.png)
 
-## 🛠️ Tecnologias utilizadas
+## Funcionalidades
 
-- **HTML5**
-- **CSS3** (Grid, Flexbox, variáveis CSS)
-- **JavaScript Vanilla**
-- **Font Awesome** (ícones sociais)
-- **Google Drive (embed de imagem)** para armazenar a foto de perfil
+- Nome com efeito de digitação na abertura
+- Tema claro/escuro, salvo no navegador (`localStorage`)
+- Foto de perfil recortada em círculo com `<svg>` e `clipPath`
+- Linha do tempo de experiências e cards de projetos
+- Layout responsivo para computador e celular
 
-## 📬 Contato
+## Tecnologias
 
-✉️ E-mail: danilabm@gmail.com
-💼 LinkedIn: linkedin.com/in/danilabm
-📸 Instagram: instagram.com/seuusuario
-🌐 Site: Cadastro Cultural
+- HTML5
+- CSS3 (Grid, Flexbox, variáveis CSS), escrito dentro do `index.html`
+- JavaScript puro
+- Font Awesome (ícones) e Google Fonts (Inter)
 
+## Estrutura
 
-## 📂 Estrutura do projeto
+```
+Portfolio/
+├── index.html      # página completa: estrutura, estilos e scripts
+├── perfil.jpg      # foto de perfil
+├── screenshot.png  # captura usada neste README
+└── README.md
+```
+
+## Como executar
+
 ```bash
-portfolio/
-├── index.html        # Página principal
-├── style.css         # Estilos (pode estar embutido no HTML)
-├── script.js         # Funções JS (pode estar embutido no HTML)
-└── README.md         # Documentação do projeto
+git clone https://github.com/danilabm/Portfolio.git
+cd Portfolio
+```
 
-🚀 Como executar o projeto
+Depois, abra o `index.html` no navegador.
 
-Clone o repositório:
-git clone https://github.com/seuusuario/portfolio.git
+## Contato
 
-Entre na pasta:
-cd portfolio
+- LinkedIn: [linkedin.com/in/danilabm](https://www.linkedin.com/in/danilabm/)
+- GitHub: [github.com/danilabm](https://github.com/danilabm)
 
-Abra o arquivo index.html no navegador de sua preferência.
+## Licença
 
-📄 Licença
-Este projeto está sob a licença MIT.
-Sinta-se à vontade para usar como referência.
+MIT.

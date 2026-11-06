@@ -160,16 +160,12 @@
     </div>
   </div>
 
-  <!-- HERO
-       - Saudação solicitada: "Olá, eu sou Danila" (apenas primeiro nome)
-       - Frase de boas-vindas logo abaixo (curta e profissional)
-       - Imagem de perfil aumentada (usa perfil.jpg em mesma pasta)
-       - Comentários no código explicam cada alteração
-  -->
+  <!-- HERO -->
   <section class="hero">
     <div>
       <div class="chips">
-        <span class="chip">Tecnologia</span>
+        <span class="chip">IA aplicada</span>
+        <span class="chip">Automação</span>
         <span class="chip">Dados</span>
         <span class="chip">QA</span>
         <span class="chip">Logística</span>
@@ -178,20 +174,15 @@
       <!-- Título principal: primeiro nome + efeito de digitação -->
       <h1> <span id="typing"></span> aqui, me conheça melhor </h1>
 
-      <!-- Frase de boas-vindas solicitada -->
-      <div class="welcome" aria-hidden="false">Bem-vinda(o) ao meu portfólio </div>
+      <div class="welcome" aria-hidden="false">Bem-vindo(a) ao meu portfólio</div>
       <p style="max-width:56ch; color:var(--muted); margin: .6rem 0 1.2rem">
-        Operações Remotas • Dados & Documentação • Qualidade de Software • Power BI • Automação de Processos
+        IA aplicada a processos • Automação • Power BI • Qualidade de Software • Operações e Setor Público
       </p>
 
       <a class="cta" href="#contato" aria-label="Fale com Danila">Fale comigo</a>
     </div>
 
-    <!-- HERO CARD: imagem de perfil real (perfil.jpg)
-         - imagem é inserida em <svg> com clipPath circular para manter estética
-         - tamanho aumentado para destaque (300x300px desktop, 260px mobile)
-         - stroke e sombra para evidenciar foto
-    -->
+    <!-- Foto de perfil recortada em círculo -->
     <div class="hero-card" aria-hidden="false" title="Foto de Danila">
       <svg viewBox="0 0 200 200" role="img" aria-label="Foto de perfil">
         <defs>
@@ -212,13 +203,13 @@
   <!-- SOBRE -->  
   <section id="sobre" class="wrap reveal">
     <h2 class="section-title"><span class="bar"></span> Sobre mim</h2>
-    <!-- Texto em português baseado no seu Profile.pdf, adaptado para tom de portfolio tech -->
     <p style="max-width:80ch; color:var(--text);">
-      Sou profissional orientada a processos com mais de 15 anos de experiência em administração, logística, compras e gestão de dados.
-      Tenho histórico de otimização de processos, automação de relatórios (Power BI) e atuação em ambientes remotos e assíncronos.
+      Sou profissional orientada a processos, com mais de 15 anos de experiência em administração pública, logística, compras e gestão de dados.
+      Hoje uso IA como ferramenta de trabalho no Controle Interno da Prefeitura de Ilhabela: com o Claude, a análise de cada processo de aluguel social caiu de 4–16 horas para 1–2 horas,
+      e uma ferramenta local em Python reduziu de dias para horas a preparação de documentos para o Tribunal de Contas do Estado de SP.
       <br><br>
-      Atuando em órgãos públicos e empresas privadas, desenvolvi competências em análise de dados, coordenação logística e implantação de controles que aumentaram eficiência operacional.
-      Atualmente curso Ciência de Dados na Univesp e me especializo em QA e automação — procurando oportunidades que valorizem processos claros, autonomia e entrega orientada a resultados.
+      Também construo dashboards em Power BI, automações com n8n e Python, e testes automatizados com Selenium e BDD.
+      Curso Ciência de Dados na Univesp.
     </p>
   </section>
 
@@ -228,23 +219,23 @@
     <div class="timeline">
       <div class="t-item">
         <h3>Prefeitura Municipal de Ilhabela</h3>
-        <div class="when">2024 – 2025</div>
-        <p>Agente de Administração Pública — análise de processos, licenças e regularização fiscal.</p>
+        <div class="when">2024 – atual</div>
+        <p>Agente de Administração Pública — Controle Interno: análise de processos com IA, ferramentas internas em Python, licenças e regularização fiscal.</p>
       </div>
       <div class="t-item">
-        <h3>Kidbrains</h3>
+        <h3>KidBrains</h3>
         <div class="when">2023 – 2024</div>
-        <p>Gerente de Recrutamento (saúde) — coordenação de pipelines e contratação remota.</p>
+        <p>Gerente de Recrutamento (saúde) — mais de 100 fonoaudiólogos contratados; vagas remotas voltadas principalmente a mulheres e mães.</p>
       </div>
       <div class="t-item">
         <h3>Leverzon</h3>
         <div class="when">2021 – 2023</div>
-        <p>Dispatcher — coordenação logística e compliance de transportadoras.</p>
+        <p>Supervisora de Operações — logística e frota de transporte de veículos, KPIs e treinamento de despachantes.</p>
       </div>
       <div class="t-item">
         <h3>Brazil Khon Kaen Trading</h3>
         <div class="when">2017 – 2021</div>
-        <p>Coordenadora de Supply Chain — compras internacionais, inventário e relatórios gerenciais.</p>
+        <p>Coordenadora de Compras e Vendas — compras nacionais e internacionais, controle de estoque e relatórios em Power BI.</p>
       </div>
     </div>
   </section>
@@ -258,8 +249,12 @@
         <p>Criação de relatórios automáticos para reduzir reuniões e fornecer dados em tempo real.</p>
       </article>
       <article class="card">
-        <h4>Otimização de Processos</h4>
-        <p>Automatização de rotinas e redução de follow-ups manuais por meio de fluxos padronizados.</p>
+        <h4>Análise de processos com IA</h4>
+        <p>Fluxos com o Claude no Controle Interno: aluguel social de 4–16 h para 1–2 h por processo; documentos para o TCE-SP de dias para horas.</p>
+      </article>
+      <article class="card">
+        <h4><a href="https://github.com/danilabm/Automacao-2025-main" target="_blank" rel="noopener">Automação de testes (BDD)</a></h4>
+        <p>Cenário em Gherkin executado com Python, Behave e Selenium.</p>
       </article>
       <article class="card">
         <h4>Implementação SAP / Logística</h4>
@@ -277,11 +272,11 @@
     </div>
   </section>
 
-  <footer>© 2025 • Danila Moraes</footer>
+  <footer>© 2026 • Danila Moraes</footer>
 
   <!-- SCRIPTS -->
   <script>
-    // Tema (dark/light) - mantive comportamento original
+    // Tema claro/escuro, salvo no navegador
     const root = document.documentElement;
     const saved = localStorage.getItem('theme');
     if(saved) root.setAttribute('data-theme', saved);
@@ -291,14 +286,14 @@
       localStorage.setItem('theme', t);
     });
 
-    // Efeito de digitação — agora mostra só o primeiro nome "Danila"
+    // Efeito de digitação do nome
     const typingEl = document.getElementById('typing');
     const nameText = 'Danila';
     let idx = 0;
     function type() {
       if (idx <= nameText.length){
         typingEl.textContent = nameText.slice(0, idx++);
-        setTimeout(type, 65); // ritmo fluido e profissional
+        setTimeout(type, 65);
       }
     }
     document.addEventListener('DOMContentLoaded', type);
