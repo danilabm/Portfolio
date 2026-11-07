@@ -1,4 +1,4 @@
-# Portfólio – Danila Moraes
+# Portfólio – Danila Almanadily
 
 Meu portfólio pessoal em uma página: trajetória, experiências, projetos e contato. Feito em HTML, CSS e JavaScript puro, sem frameworks.
 
