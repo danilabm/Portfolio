@@ -117,6 +117,13 @@
   .t-item:before{content:""; position:absolute; left:-4px; top:.4rem; width:10px; height:10px; border-radius:999px; background: var(--accent);}
   .t-item h3{margin:0; font-size:1.05rem}
   .t-item .when{font-size:.9rem; color:var(--muted)}
+  .t-item ul{margin:.5rem 0 0; padding-left:1.1rem}
+  .t-item li{margin:.25rem 0}
+  .card ul{margin:.4rem 0 0; padding-left:1.1rem}
+  .card li{margin:.25rem 0}
+  .card h4{margin:0 0 .4rem; font-size:1.02rem}
+  .skill-line{margin:.45rem 0}
+  .skill-line b{color:var(--accent)}
 
   /* Grid / cards */
   .grid{display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
@@ -154,6 +161,8 @@
         <a href="#sobre">Sobre</a>
         <a href="#experiencia">Experiência</a>
         <a href="#projetos">Projetos</a>
+        <a href="#competencias">Competências</a>
+        <a href="#formacao">Formação</a>
         <a href="#contato">Contato</a>
         <button class="theme-btn" id="themeToggle">Alternar tema</button>
       </nav>
@@ -187,7 +196,7 @@
       <svg viewBox="0 0 180 180" role="img" aria-label="Foto de perfil">
         <defs>
           <clipPath id="circleView">
-            <circle cx="100" cy="100" r="85" />
+            <circle cx="90" cy="90" r="85" />
           </clipPath>
         </defs>
 
@@ -195,7 +204,7 @@
         <image href="perfil.jpg" x="0" y="0" width="180" height="180" clip-path="url(#circleView)" preserveAspectRatio="xMidYMid slice"></image>
 
         <!-- Anel de destaque ao redor do avatar -->
-        <circle class="profile-ring" cx="100" cy="100" r="85" fill="none" stroke="var(--accent)" />
+        <circle class="profile-ring" cx="90" cy="90" r="85" fill="none" stroke="var(--accent)" />
       </svg>
     </div>
   </section>
@@ -204,12 +213,17 @@
   <section id="sobre" class="wrap reveal">
     <h2 class="section-title"><span class="bar"></span> Sobre mim</h2>
     <p style="max-width:80ch; color:var(--text);">
-      Sou profissional orientada a processos, com mais de 20 anos de experiência em administração pública, logística, compras e gestão de dados.
-      Hoje uso IA como ferramenta de trabalho no Controle Interno da Prefeitura de Ilhabela: com o Claude, a análise de cada processo de aluguel social caiu de 4–16 horas para 1–2 horas,
-      e uma ferramenta local em Python reduziu de dias para horas a preparação de documentos para o Tribunal de Contas do Estado de SP.
+      Sou profissional de operações, processos e compras, com mais de 20 anos em logística, indústria, saúde e administração pública.
+      Hoje uso IA como ferramenta de trabalho no Controle Interno da Prefeitura de Ilhabela: com o Claude, a análise de cada processo de aluguel social
+      caiu de 4–16 horas para 1–2 horas, a do PDDEMI de 4–6 horas para 1 hora e cada parecer da APAE de 2–3 dias para 4 horas, sempre com conferência humana.
+      Uma ferramenta local em Python reduziu de dias para horas a preparação de documentos para o Tribunal de Contas do Estado de SP.
       <br><br>
+      Tenho histórico de resultado mensurável: R$ 400 mil/ano de economia em compras, R$ 200 mil recuperados em contratos,
+      18% de recuperação efetiva de receita e mais de 20% de redução em retrabalho e não conformidades.
       Também construo dashboards em Power BI, automações com n8n e Python, e testes automatizados com Selenium e BDD.
       Curso Ciência de Dados na Univesp.
+      <br><br>
+      Meu diferencial: entender o processo de negócio, saber o que pedir à IA e transformar isso em fluxo de trabalho real.
     </p>
   </section>
 
@@ -218,24 +232,69 @@
     <h2 class="section-title"><span class="bar"></span> Experiência</h2>
     <div class="timeline">
       <div class="t-item">
-        <h3>Prefeitura Municipal de Ilhabela</h3>
-        <div class="when">2024 – atual</div>
-        <p>Agente de Administração Pública — Controle Interno: análise de processos com IA, ferramentas internas em Python, licenças e regularização fiscal.</p>
+        <h3>Prefeitura Municipal de Ilhabela — Controladoria-Geral do Município</h3>
+        <div class="when">2024 – atual · Agente de Administração Pública</div>
+        <ul>
+          <li>Análise de cada processo de Auxílio Social Temporário de 4–16 h para 1–2 h, com um fluxo de análise documental em IA (Claude) e critérios definidos por mim.</li>
+          <li>Ferramenta local em Python, feita com o Claude, que adequa documentos às exigências do TCE-SP (OCR, divisão de arquivos e processamento paralelo): de dias para horas.</li>
+          <li>Auditoria das prestações de contas das APMs escolares (PDDEMI, Lei Municipal 1.623/2023), com achados em crítico, alerta e informativo: de 4–6 h para 1 h, com conferência humana.</li>
+          <li>Pareceres sobre a prestação de contas da APAE (terceiro setor, MROSC) no modelo oficial da CGM: de 2–3 dias para 4 h, com a inserção no SEI feita por um agente de navegador.</li>
+          <li>Relatório de Acompanhamento Quadrimestral (cerca de 67 páginas) automatizado com gerador modular em Node.js, gráficos em Python e sumário automático.</li>
+          <li>Sistema em Python com OCR e correspondência aproximada de nomes para a prestação de contas de um convênio de saúde, com saídas em Excel, Power BI e Word.</li>
+          <li>Gestão de parcelamentos de dívida, com 18% de recuperação efetiva de receita, e controles de qualidade que reduziram retrabalho e não conformidades em mais de 20%.</li>
+        </ul>
       </div>
       <div class="t-item">
         <h3>KidBrains</h3>
-        <div class="when">2023 – 2024</div>
-        <p>Gerente de Recrutamento (saúde) — mais de 100 fonoaudiólogos contratados; vagas remotas voltadas principalmente a mulheres e mães.</p>
+        <div class="when">2023 – 2024 · Gerente de Recrutamento (Saúde) · em paralelo à Prefeitura</div>
+        <ul>
+          <li>Recrutamento de ponta a ponta, da triagem à integração, com mais de 100 fonoaudiólogos contratados.</li>
+          <li>Vagas remotas voltadas principalmente a mulheres e mães no pós-pandemia.</li>
+          <li>Sistema de triagem padronizado para um pipeline de mais de 150 candidatos por mês, com protocolos de entrevista e avaliação.</li>
+        </ul>
       </div>
       <div class="t-item">
         <h3>Leverzon</h3>
-        <div class="when">2021 – 2023</div>
-        <p>Supervisora de Operações — logística e frota de transporte de veículos, KPIs e treinamento de despachantes.</p>
+        <div class="when">2021 – 2023 · Supervisora de Operações · Estados Unidos</div>
+        <ul>
+          <li>Logística diária e frota de transporte de veículos, com rotas otimizadas para aumentar a rentabilidade.</li>
+          <li>Controles de qualidade e monitoramento de KPIs, além do programa de treinamento de novos despachantes.</li>
+        </ul>
       </div>
       <div class="t-item">
         <h3>Brazil Khon Kaen Trading</h3>
-        <div class="when">2017 – 2021</div>
-        <p>Coordenadora de Suprimentos e Vendas — compras nacionais e internacionais, controle de estoque e relatórios em Power BI.</p>
+        <div class="when">2017 – 2021 · Coordenadora de Suprimentos e Vendas</div>
+        <ul>
+          <li>Compras nacionais e internacionais para 4 filiais, com fornecedores no Brasil e na Tailândia.</li>
+          <li>Sistema de controle de estoque de produtos acabados em Excel, com acurácia e rastreabilidade em toda a cadeia.</li>
+          <li>Estoque de segurança mínimo de 90 dias para mais de 300 itens de alto giro, reduzindo vendas perdidas.</li>
+          <li>Relatórios mensais em Power BI de vendas versus metas e de estoque obsoleto.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <h3>Adeste Group (Pharma, Pet e Food)</h3>
+        <div class="when">2013 – 2014 · Coordenadora de Compras</div>
+        <ul>
+          <li>Economia anual de mais de R$ 400 mil em compras de químicos, por desenvolvimento de fornecedores, isenção fiscal e renegociação.</li>
+          <li>Dashboards executivos de KPIs de supply chain e cost avoidance, com visibilidade em tempo real para a gestão.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <h3>Saint-Gobain Weber</h3>
+        <div class="when">2012 – 2013 · Analista de Compras (Transportes e Logística)</div>
+        <ul>
+          <li>Mais de R$ 200 mil recuperados em contratos assinados e não implementados, por auditoria de contratos com transportadoras.</li>
+          <li>Ponto focal na implantação do módulo de transportes do SAP (ZF_FRETE).</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <h3>Experiências anteriores</h3>
+        <div class="when">2004 – 2012</div>
+        <ul>
+          <li>Irrigabras — Especialista em Compras (2010–2012): cadeia de suprimentos industrial completa.</li>
+          <li>Centro Paula Souza — Assistente Administrativa Acadêmica (2009–2010): implantação da secretaria de um novo campus.</li>
+          <li>Prefeitura de Carapicuíba — Supervisora Administrativa (2004–2009): RH, compras e secretaria acadêmica; implantação do sistema CECAM.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -272,6 +331,71 @@
         <h4>Ferramenta de estudos para concursos públicos</h4>
         <p>Monta o estudo dos conhecimentos específicos de cada cargo a partir de editais abertos, sob demanda para concurseiros, com simulados, flashcards e análise de resultados.</p>
       </article>
+      <article class="card">
+        <h4>OmniForge — automação de vídeos com IA</h4>
+        <p>Aplicativo desktop em Python (Flet) que leva do tema ao vídeo publicado: geração com IA, pós-produção em 14 etapas com FFmpeg e transcrição com faster-whisper, publicação via OAuth e cadeia de provedores com contingência.</p>
+      </article>
+      <article class="card">
+        <h4>Consulta de CNPJ na Receita Federal</h4>
+        <p>Consulta em lote nas APIs ReceitaWS e CNPJ.ws, com tratamento de limite de requisições e resultado em Excel, para apoiar a cobrança da Dívida Ativa. Código privado, por envolver dados fiscais.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- COMPETÊNCIAS -->
+  <section id="competencias" class="wrap reveal">
+    <h2 class="section-title"><span class="bar"></span> Competências</h2>
+    <div class="grid">
+      <article class="card">
+        <h4>IA aplicada</h4>
+        <p>LLMs (Claude, ChatGPT, DeepSeek, Kimi, NotebookLM, Gemini, Groq) e engenharia de prompt, para análise documental, relatórios técnicos, agentes de navegador e cadeias de provedores com contingência.</p>
+      </article>
+      <article class="card">
+        <h4>Automação e integrações</h4>
+        <p>Python, n8n (low-code), Node.js, APIs REST e OAuth, ferramentas internas, Selenium, Playwright, BDD/Gherkin e noções de CI/CD.</p>
+      </article>
+      <article class="card">
+        <h4>Documentos e dados</h4>
+        <p>OCR (Tesseract, ocrmypdf), extração de PDFs, pandas, Excel, Power BI e geração automática de Word e PDF.</p>
+      </article>
+      <article class="card">
+        <h4>Sistemas, mídia e métodos</h4>
+        <p>SAP (transportes), SEI, metodologias ágeis, FFmpeg e faster-whisper.</p>
+      </article>
+      <article class="card">
+        <h4>Idiomas</h4>
+        <p>Português nativo e inglês fluente.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO -->
+  <section id="formacao" class="wrap reveal">
+    <h2 class="section-title"><span class="bar"></span> Formação</h2>
+    <div class="timeline">
+      <div class="t-item">
+        <h3>Bacharelado em Ciência de Dados — Univesp</h3>
+        <div class="when">2024 – 2028 · em andamento</div>
+      </div>
+      <div class="t-item">
+        <h3>Formação em QA e automação de testes — Instituto Joga Junto</h3>
+        <div class="when">2025</div>
+      </div>
+      <div class="t-item">
+        <h3>Tecnologia em Logística e Transportes — Fatec Carapicuíba</h3>
+        <div class="when">2006 – 2010</div>
+      </div>
+      <div class="t-item">
+        <h3>Certificações</h3>
+        <div class="when">Complementares</div>
+        <ul>
+          <li>Data Science and AI Fundamentals</li>
+          <li>AI and the New Digital Culture Context</li>
+          <li>Data Engineering Fundamentals</li>
+          <li>Introduction to Data Science</li>
+          <li>Software Quality — Fundamentals</li>
+        </ul>
+      </div>
     </div>
   </section>
 
