@@ -3,437 +3,646 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- Ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- Fonte profissional recomendada para tecnologia (Inter) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-<title>Portfólio – Danila Almanadily</title>
+<meta name="description" content="Danila Almanadily — uso IA para transformar processos administrativos em ferramentas que funcionam. Controle Interno, automação, Power BI e Python." />
+<title>Danila Almanadily — IA aplicada a processos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 
 <style>
-  /* ===========================================================
-     VARIÁVEIS E PALETA
-     - Paleta escolhida para transmitir seriedade, modernidade e
-       atratividade para recrutadores de tech/IA/QA/UX.
-     - Cores principais: verde escuro (accent), verde intermediário (accent-2),
-       fundo escuro neutro e texto claro para contraste.
-     =========================================================== */
-  :root{
-    --bg: #071617;         /* fundo quase preto com subtono frio */
-    --surface: #0b2520;    /* superfície levemente mais clara */
-    --text: #eaf7f2;       /* texto principal claro e suave */
-    --muted: #9abfb0;      /* texto secundário / subtítulos */
-    --accent: #0e8f63;     /* verde principal (profissional, legível) */
-    --accent-2: #0a6e50;   /* verde secundário mais escuro */
-    --card: #082421;
-    --shadow: 0 14px 40px rgba(3,10,8,0.55);
-    --font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  }
+/* ===========================================================
+   PAPEL OFÍCIO E TINTA DE CARIMBO
+   A paleta vem do material de trabalho: papel bond frio,
+   tinta preta de máquina, violeta de carimbo e o grafite
+   das anotações à margem.
+   =========================================================== */
+:root{
+  --paper:   #eceff3;
+  --panel:   #f7f8fa;
+  --ink:     #141a22;
+  --carbon:  #5a6472;
+  --rule:    #ccd4dd;
+  --stamp:   #4338a8;
+  --stamp-2: #6f63d8;
 
-  /* Tema claro (mantive caso queira alternar) */
-  [data-theme="light"]{
-    --bg: #f6fff9;
-    --surface: #ffffff;
-    --text: #05221a;
-    --muted: #2d6b58;
-    --accent: #0f8f63;
-    --accent-2:#0a6e50;
-    --card: #ffffff;
-    --shadow: 0 10px 30px rgba(2,8,23,.06);
-  }
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --grot: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  /* Reset / tipografia */
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font:16px/1.6 var(--font-family);
-    background:
-      radial-gradient(900px 500px at 8% -8%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 28%),
-      radial-gradient(700px 600px at 100% 12%, color-mix(in oklab, var(--accent-2) 6%, transparent), transparent 38%),
-      var(--bg);
-    color:var(--text);
-    transition: background .3s ease, color .3s ease;
-    scroll-behavior:smooth;
-  }
+  --gutter: 7.5rem;
+}
 
-  /* NAVBAR (mínimas alterações) */
-  .nav{
-    position:sticky; top:0; z-index:60; backdrop-filter: blur(8px);
-    background: color-mix(in oklab, var(--bg) 88%, transparent);
-    border-bottom: 1px solid color-mix(in oklab, var(--text) 6%, transparent);
-  }
-  .nav-inner{max-width:1100px; margin:auto; padding:.9rem 1rem; display:flex; align-items:center; justify-content:space-between;}
-  .brand{font-weight:800; letter-spacing:.2px; font-size:1.05rem}
-  .nav a{color:var(--text); text-decoration:none; margin-left:1rem; font-weight:600; opacity:.95}
-  .nav a:hover{color:var(--accent)}
-  .theme-btn{
-    border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
-    background:transparent; color:var(--text);
-    border-radius:999px; padding:.45rem .8rem; cursor:pointer; font-weight:700;
-  }
+[data-theme="dark"]{
+  --paper:   #131821;
+  --panel:   #1a2029;
+  --ink:     #e8ecf2;
+  --carbon:  #9aa6b6;
+  --rule:    #2c353f;
+  --stamp:   #a99cff;
+  --stamp-2: #7d6fe8;
+}
 
-  /* HERO
-     - Aumentei o tamanho do card de imagem (perfil) para valor maior e responsivo
-     - Mantive grid, mas reduzi a diferença para destacar a foto
-  */
-  .hero{
-    max-width:1100px; margin: 2rem auto 0; padding: 4rem 1rem 3rem;
-    display:grid; gap:1.6rem; grid-template-columns: 1.05fr .95fr; align-items:center;
-  }
-  .hero h1{font-size: clamp(2rem, 4vw + 1rem, 3rem); line-height:1.05; margin:.2rem 0}
-  .hero .welcome{
-    font-size:1.02rem; color:var(--muted); margin-top:.4rem; margin-bottom:1rem;
-  }
-  .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin:.8rem 0 1.2rem}
-  .chip{
-    background: linear-gradient(90deg, color-mix(in oklab, var(--accent) 40%, transparent),
-      color-mix(in oklab, var(--accent-2) 40%, transparent));
-    color:#05221a; font-weight:700; padding:.35rem .7rem; border-radius:999px; font-size:.85rem;
-  }
-  .cta{
-    display:inline-flex; gap:.6rem; align-items:center;
-    background:linear-gradient(90deg, var(--accent), var(--accent-2));
-    color:#05221a; text-decoration:none; font-weight:800;
-    padding:.9rem 1.2rem; border-radius:12px; box-shadow: var(--shadow); transition: transform .16s ease;
-  }
-  .cta:hover{transform:translateY(-3px)}
-  .hero-card{display:flex; align-items:center; justify-content:center; border-radius:16px; padding:.5rem;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-  /* Ajuste para imagem de perfil grande: use SVG container com dimensões maiores */
-  .hero-card svg{width:340px; height:340px}
-  /* Anel (stroke) mais largo e suave */
-  .hero-card circle.profile-ring{stroke-width:5; opacity:0.98}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font:400 1.0625rem/1.68 var(--serif);
+  -webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;
+}
 
-  /* SECTIONS (mantive estrutura) */
-  section{scroll-margin-top:88px}
-  .wrap{max-width:1100px; margin:0 auto; padding: 2rem 1rem 3rem}
-  .section-title{font-size: clamp(1.4rem, 1vw + 1rem, 2rem); margin:1rem 0 2rem; display:flex; align-items:center; gap:.6rem;}
-  .section-title .bar{width:70px; height:5px; border-radius:999px; background: linear-gradient(90deg, var(--accent), var(--accent-2));}
+h1,h2,h3,.grot{font-family:var(--grot); font-variant-numeric:tabular-nums}
 
-  /* Timeline */
-  .timeline{position:relative; padding-left:28px}
-  .timeline:before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background: color-mix(in oklab, var(--text) 10%, transparent);}
-  .t-item{position:relative; margin:0 0 18px; padding-left:8px}
-  .t-item:before{content:""; position:absolute; left:-4px; top:.4rem; width:10px; height:10px; border-radius:999px; background: var(--accent);}
-  .t-item h3{margin:0; font-size:1.05rem}
-  .t-item .when{font-size:.9rem; color:var(--muted)}
-  .t-item ul{margin:.5rem 0 0; padding-left:1.1rem}
-  .t-item li{margin:.25rem 0}
-  .card ul{margin:.4rem 0 0; padding-left:1.1rem}
-  .card li{margin:.25rem 0}
-  .card h4{margin:0 0 .4rem; font-size:1.02rem}
-  .skill-line{margin:.45rem 0}
-  .skill-line b{color:var(--accent)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--stamp); outline-offset:3px; border-radius:2px;
+}
 
-  /* Grid / cards */
-  .grid{display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
-  .card{background:linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), color-mix(in oklab, var(--card) 98%, transparent));
-    border:1px solid color-mix(in oklab, var(--text) 8%, transparent);
-    border-radius:14px; padding:1.2rem; box-shadow: var(--shadow);}
+.shell{max-width:68rem; margin:0 auto; padding:0 1.5rem}
 
-  /* Contato */
-  .contacts{display:flex; gap:.6rem; flex-wrap:wrap}
-  .pill{display:inline-flex; align-items:center; gap:.5rem;
-    border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
-    padding:.6rem .9rem; border-radius:999px; text-decoration:none; color:var(--text)}
-  .pill:hover{border-color: var(--accent); color: var(--accent)}
-  .pill i{font-size:1.1rem}
+/* ---------------------------------------------------------- cabeçalho */
+.top{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in oklab, var(--paper) 92%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.top-in{
+  max-width:68rem; margin:0 auto; padding:.7rem 1.5rem;
+  display:flex; align-items:center; gap:1.25rem;
+}
+.sig{font-family:var(--grot); font-weight:800; letter-spacing:-.015em; font-size:1rem}
+.top nav{margin-left:auto; display:flex; align-items:center; gap:1.1rem; flex-wrap:wrap}
+.top nav a{
+  font-family:var(--grot); font-size:.875rem; font-weight:600;
+  text-decoration:none; color:var(--carbon); padding:.2rem 0;
+  border-bottom:2px solid transparent;
+}
+.top nav a:hover{color:var(--ink); border-bottom-color:var(--stamp)}
+.mode{
+  font-family:var(--grot); font-size:.8125rem; font-weight:600;
+  background:none; border:1px solid var(--rule); color:var(--carbon);
+  padding:.3rem .7rem; border-radius:999px; cursor:pointer;
+}
+.mode:hover{border-color:var(--stamp); color:var(--stamp)}
 
-  footer{padding:2rem 1rem; text-align:center; color:var(--muted)}
+/* ---------------------------------------------------------- abertura */
+.open{padding:4rem 0 2.5rem; border-bottom:1px solid var(--rule)}
+.open-grid{display:grid; grid-template-columns:1fr 12rem; gap:3.5rem; align-items:start}
 
-  /* Responsividade: para telas pequenas, reduzir tamanho do SVG e empilhar colunas */
-  @media (max-width: 900px){
-    .hero{grid-template-columns:1fr; gap:1rem}
-    .hero-card svg{width:260px; height:260px}
-  }
+.lede{
+  font-family:var(--grot); font-weight:800;
+  font-size:clamp(2rem,4.4vw + .5rem,3.4rem);
+  line-height:1.04; letter-spacing:-.025em; margin:0 0 1.25rem;
+  max-width:19ch;
+}
+.standfirst{margin:0 0 1.75rem; max-width:58ch; color:var(--carbon); font-size:1.125rem}
+.ident{
+  font-family:var(--grot); font-size:.875rem; font-weight:600; color:var(--carbon);
+  margin:0 0 .6rem; display:flex; flex-wrap:wrap; gap:.5rem 1.25rem;
+}
+.ident span{display:inline-flex; gap:.4rem; align-items:center}
+.ident b{color:var(--stamp); font-weight:600}
 
-  /* Acento no nome do typing */
-  #typing{font-weight:800; color:var(--accent)}
+.portrait{
+  width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; object-position:center 20%;
+  border:1px solid var(--rule); border-radius:3px; display:block;
+  filter:saturate(.96);
+}
+.portrait-note{
+  font-family:var(--grot); font-size:.75rem; color:var(--carbon);
+  margin:.5rem 0 0; letter-spacing:.01em;
+}
+
+/* ---------------------------------------------------------- gráfico de tempo */
+.ledger{margin-top:1.5rem}
+.ledger-head{
+  font-family:var(--grot); font-weight:600; font-size:.875rem; color:var(--carbon);
+  margin:0 0 1.5rem; padding-bottom:.6rem; border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+}
+.bar-row{
+  display:grid; grid-template-columns:minmax(10rem,15rem) 1fr;
+  gap:.5rem 1.75rem; align-items:center; padding:.95rem 0;
+  border-bottom:1px solid var(--rule);
+}
+.bar-name{font-family:var(--grot); font-weight:600; font-size:.9375rem; line-height:1.3}
+.bar-name small{display:block; font-weight:400; color:var(--carbon); font-size:.8125rem}
+.bar-track{display:grid; gap:.3rem}
+.bar{display:flex; align-items:center; gap:.65rem}
+.bar i{
+  height:.6rem; border-radius:1px; display:block;
+  transform-origin:left center; transform:scaleX(var(--grow,1));
+}
+.bar-before i{background:color-mix(in oklab, var(--carbon) 38%, transparent)}
+.bar-after  i{background:var(--stamp)}
+.bar span{
+  font-family:var(--grot); font-size:.8125rem; font-weight:600; color:var(--carbon);
+  white-space:nowrap;
+}
+.bar-after span{color:var(--stamp)}
+.ledger-note{font-size:.875rem; color:var(--carbon); margin:1rem 0 0; max-width:62ch}
+
+@media (prefers-reduced-motion: no-preference){
+  .animate .bar i{transition:transform .9s cubic-bezier(.22,.7,.3,1) var(--delay,0s)}
+  .animate .bar i{transform:scaleX(0)}
+  .animate.drawn .bar i{transform:scaleX(var(--grow,1))}
+}
+
+/* ---------------------------------------------------------- seções */
+.band{padding:3.75rem 0; border-bottom:1px solid var(--rule)}
+.band:last-of-type{border-bottom:0}
+.band > h2{
+  font-size:1.0625rem; font-weight:600; letter-spacing:.005em;
+  margin:0 0 2rem; color:var(--stamp);
+}
+.prose{max-width:64ch}
+.prose p{margin:0 0 1.1rem}
+.prose p:last-child{margin-bottom:0}
+
+/* ficha: ano na calha, conteúdo à direita */
+.file{display:grid; grid-template-columns:var(--gutter) 1fr; gap:1.25rem 2rem; padding:1.75rem 0; border-top:1px solid var(--rule)}
+.file:first-of-type{border-top:0; padding-top:0}
+.file-when{font-family:var(--grot); font-weight:600; font-size:.875rem; color:var(--carbon); padding-top:.2rem}
+.file h3{margin:0; font-size:1.125rem; font-weight:600; letter-spacing:-.01em}
+.file .org{margin:.15rem 0 0; color:var(--carbon); font-size:.9375rem}
+.file ul{margin:.85rem 0 0; padding:0; list-style:none; max-width:66ch}
+.file li{position:relative; padding-left:1.1rem; margin:.5rem 0}
+.file li::before{
+  content:""; position:absolute; left:0; top:.82em;
+  width:.4rem; height:1px; background:var(--stamp);
+}
+.file .stack{
+  font-family:var(--grot); font-size:.8125rem; font-weight:600; color:var(--carbon);
+  margin:.7rem 0 0;
+}
+.file .repo{
+  font-family:var(--grot); font-size:.8125rem; font-weight:600;
+  color:var(--stamp); text-decoration:none; border-bottom:1px solid currentColor;
+  margin-left:.6rem; white-space:nowrap;
+}
+.file .repo:hover{background:color-mix(in oklab, var(--stamp) 12%, transparent)}
+.closed{font-family:var(--grot); font-size:.75rem; font-weight:600; color:var(--carbon); margin-left:.6rem}
+
+/* competências em corridas de texto, não em cartões */
+.skills{display:grid; grid-template-columns:repeat(auto-fit,minmax(18rem,1fr)); gap:1.75rem 3rem}
+.skills h3{margin:0 0 .35rem; font-size:.9375rem; font-weight:600}
+.skills p{margin:0; color:var(--carbon); font-size:.9375rem; line-height:1.6}
+
+/* contato */
+.contact{display:flex; flex-wrap:wrap; gap:.6rem}
+.contact a{
+  font-family:var(--grot); font-size:.9375rem; font-weight:600; text-decoration:none;
+  border:1px solid var(--rule); border-radius:999px; padding:.55rem 1.1rem; color:var(--ink);
+}
+.contact a:hover{border-color:var(--stamp); color:var(--stamp)}
+
+footer{padding:2.5rem 0 3.5rem; color:var(--carbon); font-size:.875rem}
+
+@media (max-width:860px){
+  :root{--gutter:5rem}
+  .open-grid{grid-template-columns:1fr; gap:2rem}
+  .portrait{max-width:11rem}
+  .bar-row{grid-template-columns:1fr; gap:.5rem}
+}
+@media (max-width:640px){
+  .file{grid-template-columns:1fr; gap:.5rem}
+  .file-when{padding-top:0}
+  /* no celular a barra fica só com a assinatura e o modo: a página é curta */
+  .top nav a{display:none}
+  .top-in{padding:.6rem 1.25rem}
+  .lede{font-size:clamp(1.85rem,8vw,2.4rem)}
+}
 </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="nav-inner">
-      <div class="brand">Danila Almanadily</div>
-      <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#experiencia">Experiência</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#competencias">Competências</a>
-        <a href="#formacao">Formação</a>
-        <a href="#contato">Contato</a>
-        <button class="theme-btn" id="themeToggle">Alternar tema</button>
-      </nav>
+<header class="top">
+  <div class="top-in">
+    <span class="sig">Danila Almanadily</span>
+    <nav>
+      <a href="#resultados">Resultados</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#competencias">Competências</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato">Contato</a>
+      <button class="mode" id="mode" type="button">Modo escuro</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ABERTURA -->
+<section class="open">
+  <div class="shell open-grid">
+    <div>
+      <h1 class="lede">Transformo processo público em ferramenta que funciona.</h1>
+      <p class="standfirst">
+        Trabalho no Controle Interno da Prefeitura de Ilhabela. Uso IA para analisar
+        documentos, auditar prestações de contas e redigir pareceres — sempre com um
+        humano decidindo no fim. Antes disso, foram 20 anos em compras, logística e operações.
+      </p>
+      <p class="ident">
+        <span>Ilhabela, São Paulo</span>
+        <span><b>Ciência de Dados</b> · Univesp</span>
+        <span><b>Aberta</b> a trabalho remoto</span>
+      </p>
     </div>
+    <figure style="margin:0">
+      <img class="portrait" src="perfil.jpg" alt="Retrato de Danila Almanadily" width="360" height="480">
+      <figcaption class="portrait-note">Agente de Administração Pública<br>Controladoria-Geral do Município</figcaption>
+    </figure>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="chips">
-        <span class="chip">IA aplicada</span>
-        <span class="chip">Automação</span>
-        <span class="chip">Dados</span>
-        <span class="chip">QA</span>
-        <span class="chip">Logística</span>
-      </div>
-
-      <!-- Título principal: primeiro nome + efeito de digitação -->
-      <h1> <span id="typing"></span> aqui, me conheça melhor </h1>
-
-      <div class="welcome" aria-hidden="false">Bem-vindo(a) ao meu portfólio</div>
-      <p style="max-width:56ch; color:var(--muted); margin: .6rem 0 1.2rem">
-        IA aplicada a processos • Automação • Power BI • Qualidade de Software • Operações e Setor Público
-      </p>
-
-      <a class="cta" href="#contato" aria-label="Fale com Danila">Fale comigo</a>
-    </div>
-
-    <!-- Foto de perfil recortada em círculo -->
-    <div class="hero-card" aria-hidden="false" title="Foto de Danila">
-      <svg viewBox="0 0 180 180" role="img" aria-label="Foto de perfil">
-        <defs>
-          <clipPath id="circleView">
-            <circle cx="90" cy="90" r="85" />
-          </clipPath>
-        </defs>
-
-        <!-- A imagem local 'perfil.jpg' deve estar na mesma pasta que este HTML -->
-        <image href="perfil.jpg" x="0" y="0" width="180" height="180" clip-path="url(#circleView)" preserveAspectRatio="xMidYMid slice"></image>
-
-        <!-- Anel de destaque ao redor do avatar -->
-        <circle class="profile-ring" cx="90" cy="90" r="85" fill="none" stroke="var(--accent)" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- SOBRE -->  
-  <section id="sobre" class="wrap reveal">
-    <h2 class="section-title"><span class="bar"></span> Sobre mim</h2>
-    <p style="max-width:80ch; color:var(--text);">
-      Sou profissional de operações, processos e compras, com mais de 20 anos em logística, indústria, saúde e administração pública.
-      Hoje uso IA como ferramenta de trabalho no Controle Interno da Prefeitura de Ilhabela: com o Claude, a análise de cada processo de aluguel social
-      caiu de 4–16 horas para 1–2 horas, a do PDDEMI de 4–6 horas para 1 hora e cada parecer da APAE de 2–3 dias para 4 horas, sempre com conferência humana.
-      Uma ferramenta local em Python reduziu de dias para horas a preparação de documentos para o Tribunal de Contas do Estado de SP.
-      <br><br>
-      Tenho histórico de resultado mensurável: R$ 400 mil/ano de economia em compras, R$ 200 mil recuperados em contratos,
-      18% de recuperação efetiva de receita e mais de 20% de redução em retrabalho e não conformidades.
-      Também construo dashboards em Power BI, automações com n8n e Python, e testes automatizados com Selenium e BDD.
-      Curso Ciência de Dados na Univesp.
-      <br><br>
-      Meu diferencial: entender o processo de negócio, saber o que pedir à IA e transformar isso em fluxo de trabalho real.
+  <!-- GRÁFICO DE TEMPO -->
+  <div class="shell ledger" id="resultados">
+    <p class="ledger-head">
+      <span>Tempo de análise por processo, antes e depois das ferramentas que construí</span>
+      <span>barra cheia = tempo anterior</span>
     </p>
-  </section>
 
-  <!-- EXPERIÊNCIA -->
-  <section id="experiencia" class="wrap reveal">
-    <h2 class="section-title"><span class="bar"></span> Experiência</h2>
-    <div class="timeline">
-      <div class="t-item">
-        <h3>Prefeitura Municipal de Ilhabela — Controladoria-Geral do Município</h3>
-        <div class="when">2024 – atual · Agente de Administração Pública</div>
-        <ul>
-          <li>Análise de cada processo de Auxílio Social Temporário de 4–16 h para 1–2 h, com um fluxo de análise documental em IA (Claude) e critérios definidos por mim.</li>
-          <li>Ferramenta local em Python, feita com o Claude, que adequa documentos às exigências do TCE-SP (OCR, divisão de arquivos e processamento paralelo): de dias para horas.</li>
-          <li>Auditoria das prestações de contas das APMs escolares (PDDEMI, Lei Municipal 1.623/2023), com achados em crítico, alerta e informativo: de 4–6 h para 1 h, com conferência humana.</li>
-          <li>Pareceres sobre a prestação de contas da APAE (terceiro setor, MROSC) no modelo oficial da CGM: de 2–3 dias para 4 h, com a inserção no SEI feita por um agente de navegador.</li>
-          <li>Relatório de Acompanhamento Quadrimestral (cerca de 67 páginas) automatizado com gerador modular em Node.js, gráficos em Python e sumário automático.</li>
-          <li>Sistema em Python com OCR e correspondência aproximada de nomes para a prestação de contas de um convênio de saúde, com saídas em Excel, Power BI e Word.</li>
-          <li>Gestão de parcelamentos de dívida, com 18% de recuperação efetiva de receita, e controles de qualidade que reduziram retrabalho e não conformidades em mais de 20%.</li>
-        </ul>
+    <div class="bars animate" id="bars">
+      <div class="bar-row">
+        <div class="bar-name">Auxílio Social Temporário<small>Aluguel social</small></div>
+        <div class="bar-track">
+          <div class="bar bar-before"><i style="width:100%"></i><span>4–16 h</span></div>
+          <div class="bar bar-after"><i style="width:15%" data-delay="0"></i><span>1–2 h</span></div>
+        </div>
       </div>
-      <div class="t-item">
-        <h3>KidBrains</h3>
-        <div class="when">2023 – 2024 · Gerente de Recrutamento (Saúde) · em paralelo à Prefeitura</div>
-        <ul>
-          <li>Recrutamento de ponta a ponta, da triagem à integração, com mais de 100 fonoaudiólogos contratados.</li>
-          <li>Vagas remotas voltadas principalmente a mulheres e mães no pós-pandemia.</li>
-          <li>Sistema de triagem padronizado para um pipeline de mais de 150 candidatos por mês, com protocolos de entrevista e avaliação.</li>
-        </ul>
+
+      <div class="bar-row">
+        <div class="bar-name">Prestação de contas das APMs<small>PDDEMI, Lei Municipal 1.623/2023</small></div>
+        <div class="bar-track">
+          <div class="bar bar-before"><i style="width:100%"></i><span>4–6 h</span></div>
+          <div class="bar bar-after"><i style="width:20%" data-delay="1"></i><span>1 h</span></div>
+        </div>
       </div>
-      <div class="t-item">
-        <h3>Leverzon</h3>
-        <div class="when">2021 – 2023 · Supervisora de Operações · Estados Unidos</div>
-        <ul>
-          <li>Logística diária e frota de transporte de veículos, com rotas otimizadas para aumentar a rentabilidade.</li>
-          <li>Controles de qualidade e monitoramento de KPIs, além do programa de treinamento de novos despachantes.</li>
-        </ul>
+
+      <div class="bar-row">
+        <div class="bar-name">Parecer sobre a prestação de contas da APAE<small>Terceiro setor, MROSC</small></div>
+        <div class="bar-track">
+          <div class="bar bar-before"><i style="width:100%"></i><span>2–3 dias</span></div>
+          <div class="bar bar-after"><i style="width:20%" data-delay="2"></i><span>4 h</span></div>
+        </div>
       </div>
-      <div class="t-item">
-        <h3>Brazil Khon Kaen Trading</h3>
-        <div class="when">2017 – 2021 · Coordenadora de Suprimentos e Vendas</div>
-        <ul>
-          <li>Compras nacionais e internacionais para 4 filiais, com fornecedores no Brasil e na Tailândia.</li>
-          <li>Sistema de controle de estoque de produtos acabados em Excel, com acurácia e rastreabilidade em toda a cadeia.</li>
-          <li>Estoque de segurança mínimo de 90 dias para mais de 300 itens de alto giro, reduzindo vendas perdidas.</li>
-          <li>Relatórios mensais em Power BI de vendas versus metas e de estoque obsoleto.</li>
-        </ul>
-      </div>
-      <div class="t-item">
-        <h3>Adeste Group (Pharma, Pet e Food)</h3>
-        <div class="when">2013 – 2014 · Coordenadora de Compras</div>
-        <ul>
-          <li>Economia anual de mais de R$ 400 mil em compras de químicos, por desenvolvimento de fornecedores, isenção fiscal e renegociação.</li>
-          <li>Dashboards executivos de KPIs de supply chain e cost avoidance, com visibilidade em tempo real para a gestão.</li>
-        </ul>
-      </div>
-      <div class="t-item">
-        <h3>Saint-Gobain Weber</h3>
-        <div class="when">2012 – 2013 · Analista de Compras (Transportes e Logística)</div>
-        <ul>
-          <li>Mais de R$ 200 mil recuperados em contratos assinados e não implementados, por auditoria de contratos com transportadoras.</li>
-          <li>Ponto focal na implantação do módulo de transportes do SAP (ZF_FRETE).</li>
-        </ul>
-      </div>
-      <div class="t-item">
-        <h3>Experiências anteriores</h3>
-        <div class="when">2004 – 2012</div>
-        <ul>
-          <li>Irrigabras — Especialista em Compras (2010–2012): cadeia de suprimentos industrial completa.</li>
-          <li>Centro Paula Souza — Assistente Administrativa Acadêmica (2009–2010): implantação da secretaria de um novo campus.</li>
-          <li>Prefeitura de Carapicuíba — Supervisora Administrativa (2004–2009): RH, compras e secretaria acadêmica; implantação do sistema CECAM.</li>
-        </ul>
+
+      <div class="bar-row">
+        <div class="bar-name">Preparo de documentos para o TCE-SP<small>Auditoria de contas anuais</small></div>
+        <div class="bar-track">
+          <div class="bar bar-before"><i style="width:100%"></i><span>dias</span></div>
+          <div class="bar bar-after"><i style="width:18%" data-delay="3"></i><span>horas</span></div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- PROJETOS -->
-  <section id="projetos" class="wrap reveal">
-    <h2 class="section-title"><span class="bar"></span> Projetos em destaque</h2>
-    <div class="grid">
-      <article class="card">
-        <h4>Dashboards em Power BI</h4>
-        <p>Criação de relatórios automáticos para reduzir reuniões e fornecer dados em tempo real.</p>
-      </article>
-      <article class="card">
-        <h4>Análise de processos com IA</h4>
-        <p>Fluxos com o Claude no Controle Interno: aluguel social de 4–16 h para 1–2 h por processo; documentos para o TCE-SP de dias para horas; PDDEMI de 4–6 h para 1 h; pareceres da APAE de 2–3 dias para 4 h.</p>
-      </article>
-      <article class="card">
-        <h4><a href="https://github.com/danilabm/Automacao-2025-main" target="_blank" rel="noopener">Automação de testes (BDD)</a></h4>
-        <p>Cenário em Gherkin executado com Python, Behave e Selenium.</p>
-      </article>
-      <article class="card">
-        <h4>Implementação SAP / Logística</h4>
-        <p>Suporte à implantação de módulos logísticos e controle de KPIs de transporte.</p>
-      </article>
-    <article class="card">
-      <h4><a href="https://github.com/danilabm/checklist-documental-ia" target="_blank" rel="noopener">Checklist documental com IA</a></h4>
-      <p>Agente que recebe PDFs de um processo fictício, compara com a lista de exigências e devolve uma tabela de pendências com a base legal de cada item. Inclui uma versão do fluxo em n8n.</p>
-    </article>
-    <article class="card">
-      <h4><a href="https://github.com/danilabm/triagem-inclusiva-ia" target="_blank" rel="noopener">Triagem inclusiva com IA</a></h4>
-      <p>Anonimiza currículos fictícios, extrai as competências exigidas pela vaga e gera um roteiro de entrevista estruturada; a decisão final permanece humana.</p>
-    </article>
-      <article class="card">
-        <h4>Ferramenta de estudos para concursos públicos</h4>
-        <p>Monta o estudo dos conhecimentos específicos de cada cargo a partir de editais abertos, sob demanda para concurseiros, com simulados, flashcards e análise de resultados.</p>
-      </article>
-      <article class="card">
-        <h4>OmniForge — automação de vídeos com IA</h4>
-        <p>Aplicativo desktop em Python (Flet) que leva do tema ao vídeo publicado: geração com IA, pós-produção em 14 etapas com FFmpeg e transcrição com faster-whisper, publicação via OAuth e cadeia de provedores com contingência.</p>
-      </article>
-      <article class="card">
-        <h4>Consulta de CNPJ na Receita Federal</h4>
-        <p>Consulta em lote nas APIs ReceitaWS e CNPJ.ws, com tratamento de limite de requisições e resultado em Excel, para apoiar a cobrança da Dívida Ativa. Código privado, por envolver dados fiscais.</p>
-      </article>
+    <p class="ledger-note">
+      Cada linha é comparada consigo mesma; os dias foram contados a 8 horas de trabalho.
+      As ferramentas organizam a conferência e sustentam o achado com a base legal — quem decide continua sendo o analista.
+    </p>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="band shell" id="sobre">
+  <h2>Sobre</h2>
+  <div class="prose">
+    <p>
+      Passei mais de 20 anos resolvendo problemas de operação: compras industriais, frete, estoque,
+      recrutamento e, hoje, administração pública. O padrão foi sempre o mesmo — achar o gargalo,
+      padronizar o processo e medir o resultado.
+    </p>
+    <p>
+      No Controle Interno, uso IA como ferramenta de trabalho. Construí com o Claude fluxos para analisar
+      processos de aluguel social e auditar prestações de contas de APMs escolares e de uma entidade parceira,
+      com critérios que eu defino, mais um agente de navegador que insere os relatórios no SEI. Não preciso
+      saber como o modelo funciona por dentro; preciso saber o que pedir e como conferir o resultado.
+    </p>
+    <p>
+      O que me move é o lado humano desses processos. Um auxílio analisado mais rápido é uma família
+      esperando menos, e uma prestação de contas bem auditada protege o recurso que chega a uma entidade
+      de pessoas com deficiência. Quero levar essa combinação de processo, dados e IA para produtos e
+      iniciativas de impacto social.
+    </p>
+    <p>
+      Resultados que carrego do caminho até aqui: R$ 400 mil por ano de economia em compras,
+      R$ 200 mil recuperados em contratos esquecidos, 18% de recuperação efetiva de receita em dívida
+      municipal e mais de 20% de redução em retrabalho e não conformidades.
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIA -->
+<section class="band shell" id="experiencia">
+  <h2>Experiência</h2>
+
+  <article class="file">
+    <div class="file-when">2024 — atual</div>
+    <div>
+      <h3>Agente de Administração Pública</h3>
+      <p class="org">Prefeitura Municipal de Ilhabela · Controladoria-Geral do Município</p>
+      <ul>
+        <li>Estruturei com IA (Claude) um fluxo de análise documental do Auxílio Social Temporário, com critérios definidos por mim: de 4–16 h para 1–2 h por processo.</li>
+        <li>Construí uma ferramenta local em Python que adequa documentos às exigências do TCE-SP — conversão, OCR, divisão de arquivos e processamento paralelo — levando a preparação de dias para horas.</li>
+        <li>Criei a auditoria por IA das prestações de contas das APMs escolares (PDDEMI), com achados classificados em crítico, alerta e informativo: de 4–6 h para 1 h, com conferência humana.</li>
+        <li>Criei a elaboração de pareceres sobre a prestação de contas da APAE no modelo oficial da Controladoria, com checklist e fundamentação legal: de 2–3 dias para 4 h, e a inserção no SEI feita por um agente de navegador.</li>
+        <li>Automatizei o Relatório de Acompanhamento Quadrimestral, de cerca de 67 páginas, com gerador modular em Node.js, gráficos em Python e sumário automático.</li>
+        <li>Desenvolvi um sistema em Python com OCR e correspondência aproximada de nomes para a prestação de contas de um convênio de saúde, com rastreabilidade por página e saídas em Excel, Power BI e Word.</li>
+        <li>Gerencio parcelamentos de dívida com 18% de recuperação efetiva de receita, e implantei controles de qualidade que reduziram retrabalho e não conformidades em mais de 20%.</li>
+      </ul>
     </div>
-  </section>
+  </article>
 
-  <!-- COMPETÊNCIAS -->
-  <section id="competencias" class="wrap reveal">
-    <h2 class="section-title"><span class="bar"></span> Competências</h2>
-    <div class="grid">
-      <article class="card">
-        <h4>IA aplicada</h4>
-        <p>LLMs (Claude, ChatGPT, DeepSeek, Kimi, NotebookLM, Gemini, Groq) e engenharia de prompt, para análise documental, relatórios técnicos, agentes de navegador e cadeias de provedores com contingência.</p>
-      </article>
-      <article class="card">
-        <h4>Automação e integrações</h4>
-        <p>Python, n8n (low-code), Node.js, APIs REST e OAuth, ferramentas internas, Selenium, Playwright, BDD/Gherkin e noções de CI/CD.</p>
-      </article>
-      <article class="card">
-        <h4>Documentos e dados</h4>
-        <p>OCR (Tesseract, ocrmypdf), extração de PDFs, pandas, Excel, Power BI e geração automática de Word e PDF.</p>
-      </article>
-      <article class="card">
-        <h4>Sistemas, mídia e métodos</h4>
-        <p>SAP (transportes), SEI, metodologias ágeis, FFmpeg e faster-whisper.</p>
-      </article>
-      <article class="card">
-        <h4>Idiomas</h4>
-        <p>Português nativo e inglês fluente.</p>
-      </article>
+  <article class="file">
+    <div class="file-when">2023 — 2024</div>
+    <div>
+      <h3>Gerente de Recrutamento, saúde</h3>
+      <p class="org">KidBrains · em paralelo à Prefeitura</p>
+      <ul>
+        <li>Conduzi o recrutamento de ponta a ponta, da triagem à integração, com mais de 100 fonoaudiólogos contratados.</li>
+        <li>Recrutei para vagas remotas voltadas principalmente a mulheres e mães no pós-pandemia.</li>
+        <li>Estruturei a triagem padronizada de um pipeline de mais de 150 candidatos por mês, com protocolos de entrevista e avaliação.</li>
+      </ul>
     </div>
-  </section>
+  </article>
 
-  <!-- FORMAÇÃO -->
-  <section id="formacao" class="wrap reveal">
-    <h2 class="section-title"><span class="bar"></span> Formação</h2>
-    <div class="timeline">
-      <div class="t-item">
-        <h3>Bacharelado em Ciência de Dados — Univesp</h3>
-        <div class="when">2024 – 2028 · em andamento</div>
-      </div>
-      <div class="t-item">
-        <h3>Formação em QA e automação de testes — Instituto Joga Junto</h3>
-        <div class="when">2025</div>
-      </div>
-      <div class="t-item">
-        <h3>Tecnologia em Logística e Transportes — Fatec Carapicuíba</h3>
-        <div class="when">2006 – 2010</div>
-      </div>
-      <div class="t-item">
-        <h3>Certificações</h3>
-        <div class="when">Complementares</div>
-        <ul>
-          <li>Data Science and AI Fundamentals</li>
-          <li>AI and the New Digital Culture Context</li>
-          <li>Data Engineering Fundamentals</li>
-          <li>Introduction to Data Science</li>
-          <li>Software Quality — Fundamentals</li>
-        </ul>
-      </div>
+  <article class="file">
+    <div class="file-when">2021 — 2023</div>
+    <div>
+      <h3>Supervisora de Operações</h3>
+      <p class="org">Leverzon · Estados Unidos, remoto</p>
+      <ul>
+        <li>Coordenei a logística diária e a frota de transporte de veículos, com rotas otimizadas para aumentar a rentabilidade.</li>
+        <li>Implantei controles de qualidade e acompanhamento de KPIs, e criei o programa de treinamento de novos despachantes.</li>
+      </ul>
     </div>
-  </section>
+  </article>
 
-  <!-- CONTATO -->
-  <section id="contato" class="wrap reveal">
-    <h2 class="section-title"><span class="bar"></span> Contato</h2>
-    <div class="contacts">
-      <a class="pill" href="mailto:danilabm@gmail.com"><i class="fa-solid fa-envelope"></i> danilabm@gmail.com</a>
-      <a class="pill" href="https://www.linkedin.com/in/danilabm/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  <article class="file">
+    <div class="file-when">2017 — 2021</div>
+    <div>
+      <h3>Coordenadora de Suprimentos e Vendas</h3>
+      <p class="org">Brazil Khon Kaen Trading</p>
+      <ul>
+        <li>Gerenciei compras nacionais e internacionais para 4 filiais, com fornecedores no Brasil e na Tailândia.</li>
+        <li>Desenvolvi em Excel o sistema de controle de estoque de produtos acabados, com acurácia e rastreabilidade em toda a cadeia.</li>
+        <li>Defini estoque de segurança de 90 dias para mais de 300 itens de alto giro, reduzindo vendas perdidas por ruptura.</li>
+        <li>Criei os relatórios mensais em Power BI de vendas versus metas e de estoque obsoleto.</li>
+      </ul>
     </div>
-  </section>
+  </article>
 
-  <footer>© 2026 • Danila Almanadily</footer>
+  <article class="file">
+    <div class="file-when">2013 — 2014</div>
+    <div>
+      <h3>Coordenadora de Compras</h3>
+      <p class="org">Adeste Group · divisões Pharma, Pet e Food</p>
+      <ul>
+        <li>Gerei economia anual de mais de R$ 400 mil em compras de químicos, por desenvolvimento de fornecedores, isenção fiscal e renegociação.</li>
+        <li>Desenvolvi dashboards executivos de KPIs de cadeia de suprimentos e cost avoidance para a gestão.</li>
+      </ul>
+    </div>
+  </article>
 
-  <!-- SCRIPTS -->
-  <script>
-    // Tema claro/escuro, salvo no navegador
-    const root = document.documentElement;
-    const saved = localStorage.getItem('theme');
-    if(saved) root.setAttribute('data-theme', saved);
-    document.getElementById('themeToggle').addEventListener('click', ()=>{
-      const t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', t);
-      localStorage.setItem('theme', t);
+  <article class="file">
+    <div class="file-when">2012 — 2013</div>
+    <div>
+      <h3>Analista de Compras, transportes e logística</h3>
+      <p class="org">Saint-Gobain Weber</p>
+      <ul>
+        <li>Recuperei mais de R$ 200 mil em contratos assinados e não implementados, por auditoria de contratos com transportadoras.</li>
+        <li>Fui ponto focal na implantação do módulo de transportes do SAP (ZF_FRETE).</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">2004 — 2012</div>
+    <div>
+      <h3>Antes disso</h3>
+      <p class="org">Irrigabras · Centro Paula Souza · Prefeitura de Carapicuíba</p>
+      <ul>
+        <li>Especialista em Compras na Irrigabras (2010–2012): cadeia de suprimentos industrial completa.</li>
+        <li>Assistente Administrativa Acadêmica no Centro Paula Souza (2009–2010): implantação da secretaria de um novo campus.</li>
+        <li>Supervisora Administrativa na Prefeitura de Carapicuíba (2004–2009): RH, compras e secretaria acadêmica, com a implantação do sistema CECAM.</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<!-- PROJETOS -->
+<section class="band shell" id="projetos">
+  <h2>Projetos</h2>
+
+  <article class="file">
+    <div class="file-when">Demonstração</div>
+    <div>
+      <h3>Checklist documental com IA<a class="repo" href="https://github.com/danilabm/checklist-documental-ia" target="_blank" rel="noopener">ver o código</a></h3>
+      <p class="org">A versão pública, com dados fictícios, do método que uso no Controle Interno.</p>
+      <ul>
+        <li>Recebe os PDFs de um processo, compara com a lista de exigências e devolve uma tabela de pendências com a base legal de cada item.</li>
+        <li>Acompanha uma versão do mesmo fluxo montada em n8n.</li>
+      </ul>
+      <p class="stack">Python · Claude API · Streamlit · n8n</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">Demonstração</div>
+    <div>
+      <h3>Triagem inclusiva com IA<a class="repo" href="https://github.com/danilabm/triagem-inclusiva-ia" target="_blank" rel="noopener">ver o código</a></h3>
+      <p class="org">Recrutar reduzindo o espaço do viés, sem tirar a decisão de quem recruta.</p>
+      <ul>
+        <li>Anonimiza o currículo, extrai as competências exigidas pela vaga e gera um roteiro de entrevista estruturada.</li>
+        <li>Não dá nota nem ranking: a decisão final permanece humana.</li>
+      </ul>
+      <p class="stack">Python · Claude API · Streamlit</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">Pessoal</div>
+    <div>
+      <h3>OmniForge, automação de vídeos com IA</h3>
+      <p class="org">Do tema ao vídeo publicado, em um aplicativo desktop.</p>
+      <ul>
+        <li>Geração do roteiro com IA, pós-produção em 14 etapas com FFmpeg e transcrição com faster-whisper.</li>
+        <li>Publicação em várias plataformas via OAuth, com cadeia de provedores de IA e contingência entre eles.</li>
+      </ul>
+      <p class="stack">Python · Flet · FFmpeg · faster-whisper · OAuth</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">Pessoal</div>
+    <div>
+      <h3>Ferramenta de estudos para concursos</h3>
+      <p class="org">Sob demanda, para concurseiros.</p>
+      <ul>
+        <li>Monta o estudo dos conhecimentos específicos de cada cargo a partir dos editais abertos, com simulados, flashcards e análise de resultados.</li>
+      </ul>
+      <p class="stack">DeepSeek · NotebookLM · Claude</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">Trabalho</div>
+    <div>
+      <h3>Consulta de CNPJ na Receita Federal<span class="closed">código fechado</span></h3>
+      <p class="org">Proposta para a Dívida Ativa e Cadastro da Prefeitura.</p>
+      <ul>
+        <li>Consulta em lote nas APIs ReceitaWS e CNPJ.ws, com tratamento de limite de requisições e resultado em Excel.</li>
+        <li>O repositório é privado porque a lista de contribuintes é dado fiscal do município.</li>
+      </ul>
+      <p class="stack">Python · APIs REST · Excel</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">Estudo</div>
+    <div>
+      <h3>Automação de testes em BDD<a class="repo" href="https://github.com/danilabm/Automacao-2025-main" target="_blank" rel="noopener">ver o código</a></h3>
+      <p class="org">Da formação em QA e automação de testes.</p>
+      <ul>
+        <li>Cenários escritos em Gherkin e executados com Python, Behave e Selenium.</li>
+      </ul>
+      <p class="stack">Python · Behave · Selenium</p>
+    </div>
+  </article>
+</section>
+
+<!-- COMPETÊNCIAS -->
+<section class="band shell" id="competencias">
+  <h2>Competências</h2>
+  <div class="skills">
+    <div>
+      <h3>IA aplicada</h3>
+      <p>Claude, ChatGPT, DeepSeek, Kimi, NotebookLM, Gemini e Groq, com engenharia de prompt para análise documental, relatórios técnicos, agentes de navegador e cadeias de provedores com contingência.</p>
+    </div>
+    <div>
+      <h3>Automação e integrações</h3>
+      <p>Python, n8n, Node.js, APIs REST e OAuth, ferramentas internas, Selenium, Playwright, BDD em Gherkin e noções de CI/CD.</p>
+    </div>
+    <div>
+      <h3>Documentos e dados</h3>
+      <p>OCR com Tesseract e ocrmypdf, extração de PDFs, pandas, Excel, Power BI e geração automática de Word e PDF.</p>
+    </div>
+    <div>
+      <h3>Sistemas e métodos</h3>
+      <p>SAP no módulo de transportes, SEI, metodologias ágeis, FFmpeg e faster-whisper.</p>
+    </div>
+    <div>
+      <h3>Idiomas</h3>
+      <p>Português nativo e inglês fluente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAÇÃO -->
+<section class="band shell" id="formacao">
+  <h2>Formação</h2>
+
+  <article class="file">
+    <div class="file-when">2024 — 2028</div>
+    <div>
+      <h3>Bacharelado em Ciência de Dados</h3>
+      <p class="org">Univesp · em andamento</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">2025</div>
+    <div>
+      <h3>Formação em QA e automação de testes</h3>
+      <p class="org">Instituto Joga Junto</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">2006 — 2010</div>
+    <div>
+      <h3>Tecnologia em Logística e Transportes</h3>
+      <p class="org">Fatec Carapicuíba</p>
+    </div>
+  </article>
+
+  <article class="file">
+    <div class="file-when">Cursos</div>
+    <div>
+      <h3>Certificações complementares</h3>
+      <ul>
+        <li>Data Science and AI Fundamentals</li>
+        <li>AI and the New Digital Culture Context</li>
+        <li>Data Engineering Fundamentals</li>
+        <li>Introduction to Data Science</li>
+        <li>Software Quality — Fundamentals</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<!-- CONTATO -->
+<section class="band shell" id="contato">
+  <h2>Contato</h2>
+  <div class="prose" style="margin-bottom:1.5rem">
+    <p>Aberta a conversas sobre IA aplicada a processos, automação e impacto social. Respondo rápido.</p>
+  </div>
+  <div class="contact">
+    <a href="mailto:danilabm@gmail.com">danilabm@gmail.com</a>
+    <a href="https://www.linkedin.com/in/danilabm/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/danilabm" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="shell">Ilhabela, São Paulo · 2026</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var botao = document.getElementById('mode');
+
+  function aplicar(tema) {
+    root.setAttribute('data-theme', tema);
+    botao.textContent = tema === 'dark' ? 'Modo claro' : 'Modo escuro';
+  }
+
+  var salvo = null;
+  try { salvo = localStorage.getItem('tema'); } catch (e) {}
+  aplicar(salvo === 'dark' ? 'dark' : 'light');
+
+  botao.addEventListener('click', function () {
+    var novo = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    aplicar(novo);
+    try { localStorage.setItem('tema', novo); } catch (e) {}
+  });
+
+  // Uma animação só: as barras do resultado desenham ao entrar na tela.
+  var barras = document.getElementById('bars');
+  var parado = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (parado || !('IntersectionObserver' in window)) {
+    barras.classList.remove('animate');
+    return;
+  }
+
+  barras.querySelectorAll('.bar i').forEach(function (b) {
+    b.style.setProperty('--grow', 1);
+    if (b.dataset.delay) b.style.setProperty('--delay', (b.dataset.delay * 0.09) + 's');
+  });
+
+  new IntersectionObserver(function (entradas, obs) {
+    entradas.forEach(function (e) {
+      if (e.isIntersecting) { barras.classList.add('drawn'); obs.disconnect(); }
     });
-
-    // Efeito de digitação do nome
-    const typingEl = document.getElementById('typing');
-    const nameText = 'Danila';
-    let idx = 0;
-    function type() {
-      if (idx <= nameText.length){
-        typingEl.textContent = nameText.slice(0, idx++);
-        setTimeout(type, 65);
-      }
-    }
-    document.addEventListener('DOMContentLoaded', type);
-  </script>
+  }, { threshold: 0.25 }).observe(barras);
+})();
+</script>
 
 </body>
 </html>
