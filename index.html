@@ -145,6 +145,12 @@ a:focus-visible,button:focus-visible{
   white-space:nowrap;
 }
 .bar-after span{color:var(--stamp)}
+.demo-wrap{margin-top:2.5rem; padding-top:2.25rem; border-top:1px solid var(--rule)}
+.demo-wrap h2{font-size:1.0625rem; font-weight:600; margin:0 0 .4rem; color:var(--stamp)}
+.demo-wrap video{
+  width:100%; display:block; margin-top:1.1rem; border:1px solid var(--rule);
+  border-radius:3px; background:#0d1117;
+}
 .ledger-note{font-size:.875rem; color:var(--carbon); margin:1rem 0 0; max-width:62ch}
 
 @media (prefers-reduced-motion: no-preference){
@@ -180,6 +186,12 @@ a:focus-visible,button:focus-visible{
   font-family:var(--grot); font-size:.8125rem; font-weight:600; color:var(--carbon);
   margin:.7rem 0 0;
 }
+.demo{
+  font-family:var(--grot); font-size:.75rem; font-weight:600; letter-spacing:.01em;
+  color:var(--stamp); text-decoration:none; border-bottom:1px solid currentColor;
+  display:inline-block; margin-top:.3rem;
+}
+.demo:hover{background:color-mix(in oklab, var(--stamp) 12%, transparent)}
 .file .repo{
   font-family:var(--grot); font-size:.8125rem; font-weight:600;
   color:var(--stamp); text-decoration:none; border-bottom:1px solid currentColor;
@@ -294,7 +306,7 @@ footer{padding:2.5rem 0 3.5rem; color:var(--carbon); font-size:.875rem}
       </div>
 
       <div class="bar-row">
-        <div class="bar-name">Preparo de documentos para o TCE-SP<small>Auditoria de contas anuais</small></div>
+        <div class="bar-name">Preparo de documentos para o TCE-SP<small>Auditoria de contas anuais</small><a class="demo" href="#demo">ver a ferramenta rodando</a></div>
         <div class="bar-track">
           <div class="bar bar-before"><i style="width:100%"></i><span>dias</span></div>
           <div class="bar bar-after"><i style="width:18%" data-delay="3"></i><span>horas</span></div>
@@ -306,6 +318,20 @@ footer{padding:2.5rem 0 3.5rem; color:var(--carbon); font-size:.875rem}
       Cada linha é comparada consigo mesma; os dias foram contados a 8 horas de trabalho.
       As ferramentas organizam a conferência e sustentam o achado com a base legal — quem decide continua sendo o analista.
     </p>
+
+    <div class="demo-wrap" id="demo">
+      <h2>A ferramenta rodando</h2>
+      <p class="ledger-note" style="margin:0">
+        Dois minutos e meio da ferramenta do TCE-SP processando seis documentos de exemplo:
+        OCR em páginas que não tinham texto, conversão para preto e branco, compressão e divisão,
+        dois arquivos em paralelo. É uma ferramenta local, que roda na máquina e não envia nada
+        para fora, e eu a construí com apoio de IA na programação. Os documentos são fictícios.
+      </p>
+      <video controls preload="none" poster="demo-tce-poster.jpg" playsinline>
+        <source src="demo-tce.mp4" type="video/mp4">
+        Seu navegador não reproduz este vídeo.
+      </video>
+    </div>
   </div>
 </section>
 
@@ -349,7 +375,7 @@ footer{padding:2.5rem 0 3.5rem; color:var(--carbon); font-size:.875rem}
       <p class="org">Prefeitura Municipal de Ilhabela · Controladoria-Geral do Município</p>
       <ul>
         <li>Estruturei com IA (Claude) um fluxo de análise documental do Auxílio Social Temporário, com critérios definidos por mim: de 4–16 h para 1–2 h por processo.</li>
-        <li>Construí uma ferramenta local em Python que adequa documentos às exigências do TCE-SP — conversão, OCR, divisão de arquivos e processamento paralelo — levando a preparação de dias para horas.</li>
+        <li>Construí uma ferramenta local em Python que adequa documentos às exigências do TCE-SP — conversão, OCR, divisão de arquivos e processamento paralelo — levando a preparação de dias para horas. <a class="demo" href="#demo">ver rodando, com documentos fictícios</a></li>
         <li>Criei a auditoria por IA das prestações de contas das APMs escolares (PDDEMI), com achados classificados em crítico, alerta e informativo: de 4–6 h para 1 h, com conferência humana.</li>
         <li>Criei a elaboração de pareceres sobre a prestação de contas da APAE no modelo oficial da Controladoria, com checklist e fundamentação legal: de 2–3 dias para 4 h, e a inserção no SEI feita por um agente de navegador.</li>
         <li>Automatizei o Relatório de Acompanhamento Quadrimestral, de cerca de 67 páginas, com gerador modular em Node.js, gráficos em Python e sumário automático.</li>
