@@ -42,7 +42,9 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* A base cresce com a largura da tela: em monitor grande tudo escala junto,
+   porque medidas, colunas e largura de leitura estao todas em rem/ch. */
+html{scroll-behavior:smooth; font-size:clamp(16px, 0.39vw + 11px, 21px)}
 
 body{
   margin:0;
